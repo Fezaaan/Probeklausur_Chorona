@@ -11,7 +11,10 @@ public class Point {
       result = prime * result + this.y;
       return result;
 	}
-
+    public Point(int x, int y){
+        this.x = x;
+        this.y=y;
+    }
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
