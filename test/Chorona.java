@@ -31,6 +31,7 @@ public class Chorona {
       }
    }
 	public static void main(String[] args) {
+
       try {
          Map<Variant, Double> pollutants = Chorona.getPollutantFactors();
 
@@ -38,7 +39,6 @@ public class Chorona {
          int width = 9;
          int height = 7;
          int noOfPolluters = 6;
-
          RoomSetting setting = new RoomSetting( width, height, noOfPolluters );
          for ( Entry<Variant, Double> e : pollutants.entrySet() ) {
             new ChoronaTerminal( e.getKey(), new Room( e.getValue(), setting ) );

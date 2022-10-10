@@ -15,7 +15,15 @@ public class Point {
         this.x = x;
         this.y=y;
     }
-	@Override
+
+    public int getX() {
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
+
+    @Override
 	public boolean equals(Object obj) {
 		if (this == obj) {
          return true;
