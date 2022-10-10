@@ -1,15 +1,15 @@
 package test;
 
+import java.util.ArrayList;
+
 public class RoomSetting {
-    public class AHAException extends Exception{
-        public AHAException(String message){
-            super(message);
-        }
+    public Point[] getPolluters() {
+        return null;
     }
     private int width;
     private final String AHA = "Insufficient singers";
     private int height;
-    private int[][] pollutants;
+    private ArrayList<Point> pollutants;
     int noOfPolluters;
 
     public RoomSetting(int width, int height, int noOfPolluters)throws AHAException{
@@ -32,7 +32,5 @@ public class RoomSetting {
         return noOfPolluters;
     }
 
-    public int[][] getPollutants() {
-        return pollutants;
-    }
+
 }
