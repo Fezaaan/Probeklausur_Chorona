@@ -1,6 +1,7 @@
 package test;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ChoronaTerminal extends JFrame {
     public ChoronaTerminal(Variant key, Room room) {
