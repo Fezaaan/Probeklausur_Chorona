@@ -23,7 +23,6 @@ public class RoomSetting {
         for(int i=0; i<noOfPolluters;i++){
                 Random random = new Random();
                 Point neu = new Point(random.nextInt((width+1)),random.nextInt((height+1)));
-
             while(pollutants.contains(neu)){
                 neu = new Point(random.nextInt((width+1)),random.nextInt((height+1)));
             }

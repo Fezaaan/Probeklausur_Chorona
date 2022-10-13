@@ -16,9 +16,16 @@ public class ChoronaTerminal extends JFrame {
         this.add(top,BorderLayout.NORTH);
         //middle-----------
         JPanel middle = new JPanel(new GridLayout(room.getSetting().getHeight(),room.getSetting().getWidth()));
-        int felder = room.getSetting().getHeight()*room.getSetting().getWidth();
-        for(int i =0; i<felder; i++){
-            middle.add(new CellButton());
+        for(int i = 0; i<room.getSetting().getHeight();i++){
+            for(int j =0; j<room.getSetting().getWidth();j++){
+                Point check = new Point(i,j);
+                if(room.getSetting().pollutants.contains(check)){
+                    middle.add(new CellButton(room.getDose(j,i),true));
+                }
+                else{
+                    middle.add(new CellButton(0,false));
+                }
+            }
         }
         this.add(middle, BorderLayout.CENTER);
         //bottom
