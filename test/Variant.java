@@ -1,6 +1,7 @@
 package test;
 
 public enum Variant{
+    WILD_TYPE("Wildtyp","SARS-Cov-2"),
     ALPHA("Alpha","B.1.1.7"),
     BETA("Beta","B.1.351"),
     GAMMA("Gamma", "P.1"),

@@ -15,6 +15,7 @@ public class CellButton extends JButton {
             this.setBorder(BorderFactory.createLineBorder(Color.BLACK,4));
 
         }
+        Chorona.updateButtonForDose(this,dose);
     }
     public double getDose() {
         return dose;
