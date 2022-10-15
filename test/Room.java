@@ -87,7 +87,7 @@ public class Room implements IRoom {
     */
 	@Override
    public void addDose(int x, int y, double dose) {
-      this.setDose( x, y, dose + this.getDose( x, y ) );
+      this.setDose( x, y, dose + this.getDose(x,y) );
 	}
 
 
@@ -96,20 +96,20 @@ public class Room implements IRoom {
     */
 	@Override
    public void step() {
-      this.pollute();
-		double[][] result = new double[this.cells.length][this.cells[0].length];
-      for ( int y = 0; y < this.setting.getHeight(); y++ ) {
-         for ( int x = 0; x < this.setting.getWidth(); x++ ) {
-				double av = this.getAverageForCellAndNeighbours(x, y);
-            result[y][x] = av;
-			}
-		}	
-      for ( int y = 0; y < this.setting.getHeight(); y++ ) {
-         for ( int x = 0; x < this.setting.getWidth(); x++ ) {
-            this.cells[y][x] = result[y][x];
-			}
-		}	
-      this.steps++;
+       this.pollute();
+       double[][] result = new double[this.cells.length][this.cells[0].length];
+       for ( int y = 0; y < this.setting.getHeight(); y++ ) {
+          for ( int x = 0; x < this.setting.getWidth(); x++ ) {
+             double av = this.getAverageForCellAndNeighbours(x, y);
+             result[y][x] = av;
+          }
+       }
+       for ( int y = 0; y < this.setting.getHeight(); y++ ) {
+          for ( int x = 0; x < this.setting.getWidth(); x++ ) {
+             this.cells[y][x] = result[y][x];
+          }
+       }
+       this.steps++;
 	}
 
    /**

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class RoomSetting {
-    public Point[] getPolluters() {
-        return null;
+    public ArrayList<Point> getPolluters() {
+        return pollutants;
     }
     private int width;
     private final String AHA = "Insufficient singers";
     private int height;
-    private ArrayList<Point> pollutants;
+    ArrayList<Point> pollutants=new ArrayList<Point>();
     int noOfPolluters;
 
     public RoomSetting(int width, int height, int noOfPolluters)throws AHAException{
@@ -23,10 +23,10 @@ public class RoomSetting {
         for(int i=0; i<noOfPolluters;i++){
                 Random random = new Random();
                 Point neu = new Point(random.nextInt((width+1)),random.nextInt((height+1)));
-                while(pollutants.contains(neu)==true){
-                    neu = new Point(random.nextInt((width+1)),random.nextInt((height+1)));
-                }
-                pollutants.add(neu);
+            while(pollutants.contains(neu)){
+                neu = new Point(random.nextInt((width+1)),random.nextInt((height+1)));
+            }
+            pollutants.add(neu);
         }
     }
 

@@ -1,12 +1,10 @@
 package test;
 
 import java.awt.Color;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.io.*;
+import java.util.*;
 import java.util.Map.Entry;
+import java.util.function.DoubleToIntFunction;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,9 +20,11 @@ public class Chorona {
          Map<Variant, Double> pollutants = Chorona.getPollutantFactors();
 
          // Diese drei Werte sind im Verlauf der Aufgabe zufaellig zu setzen
-         int width = 9;
-         int height = 7;
-         int noOfPolluters = 6;
+         Random zufall = new Random();
+
+         int width = zufall.nextInt(7,10);
+         int height = zufall.nextInt(7,10);
+         int noOfPolluters = zufall.nextInt(5,8);
          RoomSetting setting = new RoomSetting( width, height, noOfPolluters );
          for ( Entry<Variant, Double> e : pollutants.entrySet() ) {
             new ChoronaTerminal( e.getKey(), new Room( e.getValue(), setting ) );
@@ -35,13 +35,23 @@ public class Chorona {
 	}
 	
 
-   public static Map<Variant, Double> getPollutantFactors() {
+   public static Map<Variant, Double> getPollutantFactors(){
       Map<Variant, Double> map = new HashMap<>();
 
       // Diese beiden TEST (!) Zeilen auskommentieren und das Einlesen der Datei
       // "pollutantfactors.txt" ergaenzen
-      Chorona.parsePolluteFactor( "DELTA,50", map );
-      Chorona.parsePolluteFactor( "OMICRON,200", map );
+      //Chorona.parsePolluteFactor( "DELTA,50", map );
+      //Chorona.parsePolluteFactor( "OMICRON,200", map );
+      try {
+         FileInputStream f = new FileInputStream("test/pollutantfactors.txt");
+         Scanner s= new Scanner(f);
+         while(s.hasNextLine()){
+            Chorona.parsePolluteFactor( s.nextLine(), map );
+         }
+         s.close();
+      }catch (Exception e){
+         e.printStackTrace();
+      }
 
       // Wenn nach dem Einlesen der Datei mehr als zwei Eintraege in der Map
       // sind werden zwecks Uebersicht zufaellig so lange Eintraege entfernt,
